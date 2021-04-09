@@ -8,6 +8,11 @@
 /*----------------------------------------------------------------------------*/
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Ldrive               motor         1               
+// Rdrive               motor         10              
+// Controller1          controller                    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -32,6 +37,10 @@ void usercontrol(void)  {
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
   
+  
+
+  while (true) {
+    wait(100, msec);
+  }
 }
