@@ -1,8 +1,8 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       C:\Users\cheni                                            */
-/*    Created:      Thu Mar 04 2021                                           */
+/*    Author:       C:\Users\willi                                            */
+/*    Created:      Sat Apr 10 2021                                           */
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
@@ -10,37 +10,28 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Ldrive               motor         1               
-// Rdrive               motor         10              
 // Controller1          controller                    
+// motor_left           motor         1               
+// motor_right          motor         10              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
+// VEX V5 C++ Project
 #include "vex.h"
 
+
+
+
+
+//#region config_globals
+
+//#endregion config_globals
+
 using namespace vex;
-controller Controller1;
 
-motor Ldrive(PORT1, ratio18_1);
-motor Rdrive(PORT10, ratio18_1);
-
-void MoveMotors(float Iinput, float rInput) {
-  Ldrive.spin(fwd, Iinput, pct);
-  Rdrive.spin(fwd, rInput, pct);
+int main(void) {
+    while(true) {
+        motor_left.spin(vex::directionType::fwd, Controller1.Axis3.position(vex::percentUnits::pct), vex::velocityUnits::pct);
+        motor_right.spin(vex::directionType::rev, Controller1.Axis2.position(vex::percentUnits::pct), vex::velocityUnits::pct);
+    }
 }
 
-void usercontrol(void)  {
-  while (true) {
-    MoveMotors(Controller1.Axis3.value(), Controller1.Axis2.value());
-  }
-
-}
-
-int main() {
-  // Initializing Robot Configuration. DO NOT REMOVE!
-  
-  
-
-  while (true) {
-    wait(100, msec);
-  }
-}
